@@ -1,0 +1,142 @@
+canvas {
+    border: 6px solid darkorange;
+    box-shadow: 0px 16px 16px 0px gray;
+    background-color: darkslategray;
+}
+
+body {
+    text-align: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+.container {
+    text-align: center;
+    align-items: center;
+}
+
+.titulo {
+    color: darkslategrey;
+    font-weight: bolder;
+    font-size: x-large;
+    margin-right: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 0px 6px 6px 0px gray;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(220, 200, 162);
+    border-radius: 5px;
+    border: 4px solid darkslategrey;
+}
+
+.topo {
+    margin: 20px;
+}
+
+.botao-topo {
+    background-color: orange;
+    color: darkslategray;
+    text-decoration: none;
+    padding: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    border-radius: 6px;
+    border: 2px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    box-shadow: 0px 6px 6px 0px gray;
+}
+
+.botao-retornar:hover {
+    background-color: darkslategray;
+    color: orange;
+}
+
+#tooltip {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: orange;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.painel-container {
+    text-align: center;
+    align-items: center;
+}
+
+.painel {
+    color: darkslategrey;
+    font-weight: bolder;
+    font-size: larger;
+    margin: auto;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: rgb(232, 230, 230);
+    border: 3px solid white;
+    box-shadow: 0px 2px 2px 0px gray;
+    border-radius: 5px;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.painel-edit {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    color: darkslategrey;
+    font-size: larger;
+    margin: auto;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: rgb(232, 230, 230);
+    border: 3px solid white;
+    box-shadow: 0px 2px 2px 0px gray;
+    border-radius: 5px;
+    width: 400px;
+    justify-content: center;
+}
+
+.select-turma {
+    margin: auto;
+    padding: 5px;
+    background-color: white;
+    box-shadow: 0px 2px 2px 0px gray;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.campo {
+    margin-bottom: 6px;
+    font-size: 0.8em;
+}
+
+.matr {
+    color: darkred;
+    width: 100px;
+}
+
+.nome {
+    color: darkblue;
+    width: 250px;
+}
+
+.nota {
+    color: darkblue;
+    width: 50px;
+}
+
+.grid-campos {
+    color: black;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+

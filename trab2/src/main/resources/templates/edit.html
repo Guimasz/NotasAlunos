@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <title>Prova 2</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="topo">
+        <span class="titulo">Editando</span>
+        <a href="/" class="botao-topo">CANCELAR</a>
+    </div>
+
+    <div class="painel-edit">
+        <p>Editando notas</p>
+
+        <!--    Nos campos do formulário, você precisa injetar dados via Thymeleaf
+                Isto está relacionado ao Controller. -->
+
+        <div class="grid-campos">
+            <div class="campo">Nome</div>
+            <input id="nome" class="campo nome" type="text">
+
+            <div class="campo">Matrícula</div>
+            <input id="matricula" class="campo matr" type="text">
+
+            <div class="campo">Turma</div>
+            <input id="turma" class="campo nota" type="number">
+
+            <div class="campo">Nota</div>
+            <input id="nota" class="campo nota" type="number">
+
+        </div>
+
+    </div>
+
+    <!--  Aqui nestes botões também será necessário injetar dados com Thymeleaf.
+          Você insere atributo de id e o usa para chamar alguma função do JavaScript.  -->
+
+    <span onclick="" class="botao-topo">EFETIVAR</span>
+    <span onclick="" class="botao-topo">REMOVER</span>
+
+</div>
+
+
+<script src="/scriptEdit.js"></script>
+</body>
+</html>
