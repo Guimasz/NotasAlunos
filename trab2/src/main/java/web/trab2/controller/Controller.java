@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import web.trab2.config.Utils;
 import web.trab2.model.Aluno;
 import web.trab2.model.AlunoDto;
@@ -22,15 +23,26 @@ public class Controller {
 
     @GetMapping("/getAll")
     public ResponseEntity<ArrayList<Aluno>> getAll() {
+        ArrayList<Aluno> alunos = new ArrayList<Aluno>(this.repository.findAll());
+        return new ResponseEntity<>(alunos, HttpStatus.OK);
         /*
             Aqui você consulta o Repository para retornar um array list com todos os dados.
             Evidentemente, você deve remover este return null.
          */
-        return null;
     }
 
     @PostMapping("/updateAluno")
     public ResponseEntity<Object> updateAluno(@RequestBody AlunoDto dto) {
+        Aluno aluno = this.repository.findById(Long.parseLong(dto.id)).orElse(null);
+        if (aluno == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não há aluno com este id");
+
+            aluno.setNome(dto.nome);
+            aluno.setMatricula(dto.matricula);
+            aluno.setTurma(Integer.parseInt(dto.turma));
+            aluno.setNota(Double.parseDouble(dto.nota));
+            this.repository.save(aluno);
+            return ResponseEntity.status(HttpStatus.OK).body("Aluno atualizado com sucesso");
         /*
             Aqui você atualiza os dados de um aluno. Note que findById te retornará um objeto
             do tipo Optional. Ele poderá indicar se o id do dado realmente existe. Caso exista,
@@ -38,11 +50,22 @@ public class Controller {
             existir, responda status NOT_FOUND como o corpo da mensagem "Não há aluno com este id".
             O último return não pode ser null. Corrija isso.
          */
-        return null;
     }
 
     @PostMapping("/novoAluno")
     public ResponseEntity<Object> novoAluno(@RequestBody AlunoDto dto) {
+        ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+        if (this.repository.countAlunoByTurma(Integer.parseInt(dto.turma)) >= 10)
+            return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE).body("Dados em excesso");
+
+
+        Aluno novoAluno = new Aluno();
+        novoAluno.setNome(dto.nome);
+        novoAluno.setMatricula(dto.matricula);
+        novoAluno.setTurma(Integer.parseInt(dto.turma));
+        novoAluno.setNota(Double.parseDouble(dto.nota));
+
+        this.repository.save(novoAluno);
         /*
             Aqui você registra um novo aluno, que você cria a partir do dto.
             PRESTE ATENÇÃO. A turma não pode exceder 10 alunos. A interface AlunoRepository
@@ -51,7 +74,7 @@ public class Controller {
             e agregue no corpo da mensagem a string "Dados em excesso".
             Evidentemente, remova o null do último return enquanto agrega o status OK.
          */
-        return null;
+        return ResponseEntity.status(HttpStatus.OK).body("Aluno adicionado com sucesso");
     }
 
     @PostMapping("/delete")
