@@ -40,8 +40,8 @@
     <!--  Aqui nestes botões também será necessário injetar dados com Thymeleaf.
           Você insere atributo de id e o usa para chamar alguma função do JavaScript.  -->
 
-    <span onclick="enviaEdit()" class="botao-topo">EFETIVAR</span>
-    <span onclick="deleteAluno(id)" class="botao-topo">REMOVER</span>
+    <span th:attr="onclick=|enviaEdit('${alunoDto.id}')|"  class="botao-topo" >EFETIVAR</span>
+    <span th:attr="onclick=|deleteAluno('${alunoDto.id}')|" class="botao-topo">REMOVER</span>
 
 </div>
 

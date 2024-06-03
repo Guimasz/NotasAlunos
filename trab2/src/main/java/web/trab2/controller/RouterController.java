@@ -29,12 +29,18 @@ public class RouterController {
     @GetMapping("/edit/{id}")
     public ModelAndView editNotas(@PathVariable("id") String id) {
         ModelAndView mv = new ModelAndView("edit");
-        AlunoDto aluno = this.repository.findById(Long.parseLong(id)).orElse(null);
+        Aluno aluno = this.repository.findById(Long.parseLong(id)).orElse(null);
         if (aluno == null) {
             mv.addObject("error", "Aluno não encontrado");
             return mv;
         }
-        mv.addObject("aluno", aluno);
+        AlunoDto alunoDto = new AlunoDto();
+        alunoDto.id = String.valueOf(aluno.getId());
+        alunoDto.turma = String.valueOf(aluno.getTurma());
+        alunoDto.nome = aluno.getNome();
+        alunoDto.matricula = aluno.getMatricula();
+        alunoDto.nota = String.valueOf(aluno.getNota());
+        mv.addObject("alunoDto", alunoDto);
         /*
             Aqui você obtém do banco de dados um objeto Aluno a partir do id informado
             Se o aluno com o id existir nos dados, você injeta no Model & View o dto correspondente

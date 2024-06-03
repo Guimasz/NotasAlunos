@@ -4,6 +4,7 @@
 
 
 enviaEdit = function(id) {
+    console.log('json');
     let dto = {
         id: id,
         turma: document.getElementById('turma').value,
@@ -17,10 +18,12 @@ enviaEdit = function(id) {
     request.setRequestHeader("Content-Type", "application/json");
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
+
             if (request.status === 200) {
                 window.location.href = '/';
+
             } else {
-                // TODO: FAZER ALGO SE DEU ERRADO
+
             }
         }
     }
