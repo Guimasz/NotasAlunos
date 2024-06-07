@@ -22,8 +22,7 @@ public class RouterController {
 
     @GetMapping("/novo")
     public String novoAluno() {
-        return "novo";
-    }
+        return "novo"; }
 
 
     @GetMapping("/edit/{id}")

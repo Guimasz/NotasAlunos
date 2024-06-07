@@ -54,7 +54,7 @@ public class Controller {
 
     @PostMapping("/novoAluno")
     public ResponseEntity<Object> novoAluno(@RequestBody AlunoDto dto) {
-        ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+
         if (this.repository.countAlunoByTurma(Integer.parseInt(dto.turma)) >= 10)
             return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE).body("Dados em excesso");
 

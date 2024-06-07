@@ -22,16 +22,16 @@
 
         <div class="grid-campos">
             <div class="campo">Nome</div>
-            <input id="nome" class="campo nome" type="text">
+            <input id="nome" class="campo nome" type="text" th:value="${alunoDto.nome}">
 
             <div class="campo">Matrícula</div>
-            <input id="matricula" class="campo matr" type="text">
+            <input id="matricula" class="campo matr" type="text" th:value="${alunoDto.matricula}">
 
             <div class="campo">Turma</div>
-            <input id="turma" class="campo nota" type="number">
+            <input id="turma" class="campo nota" type="number" th:value="${alunoDto.turma}">
 
             <div class="campo">Nota</div>
-            <input id="nota" class="campo nota" type="number">
+            <input id="nota" class="campo nota" type="number" th:value="${alunoDto.nota}" >
 
         </div>
 
