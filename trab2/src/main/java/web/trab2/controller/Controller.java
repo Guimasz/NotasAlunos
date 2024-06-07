@@ -51,6 +51,12 @@ public class Controller {
                 aluno.setMatricula(dto.matricula);
                 aluno.setTurma(Integer.parseInt(dto.turma));
                 aluno.setNota(Double.parseDouble(dto.nota));
+                
+                double nota = Double.parseDouble(dto.nota);
+                if(nota < 0 || nota > 10)
+                	throw new IllegalArgumentException("A nota deve estar entre 0 e 10");
+                
+                
                 this.repository.save(aluno);
                 return ResponseEntity.status(HttpStatus.OK).body("Aluno atualizado com sucesso");
             /*
@@ -64,7 +70,12 @@ public class Controller {
         }catch (NumberFormatException e) {
          
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Os dados fornecidos são inválidos");
-        } catch (Exception e) {
+            
+        }catch (IllegalArgumentException e) {
+        	
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } 
+        catch (Exception e) {
         	
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro interno do servidor");
         }
